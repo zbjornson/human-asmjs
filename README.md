@@ -16,6 +16,8 @@ var a = (x/2)|0; // "Variable initialization value needs to be a numeric literal
 var a = 0; a = (x/2)|0; // works
 ```
 
+To coerce a double to an int, you must use `~~`, as Vyacheslav Egorov points out [here](https://twitter.com/Zbjorn/status/336974148964343808). Trying to use the perhaps more obvious `|0` will fail with the message <i>Operands to bitwise ops must be intish</i>.
+
 <b>Arrays</b>
 
 Plain arrays, and by extension typed arrays created inline from plain arrays, are not allowed:
