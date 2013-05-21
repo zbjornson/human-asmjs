@@ -13,6 +13,7 @@ Variables must be initialized to primitive types. They cannot be null, and they 
 ```javascript
 var a; // "Variable needs explicit type declaration via an initial value"
 var a = (x/2)|0; // "Variable initialization value needs to be a numeric literal"
+var a = 0; a = (x/2)|0; // works
 ```
 
 <b>Arrays</b>
