@@ -7,6 +7,14 @@ Contributions welcome. This document is based more on my observations than on my
 
 ### Variables
 
+<b>Basic Types</b>
+
+Variables must be initialized to primitive types. They cannot be null, and they cannot be calculated:
+```javascript
+var a; // "Variable needs explicit type declaration via an initial value"
+var a = (x/2)|0; // "Variable initialization value needs to be a numeric literal"
+```
+
 <b>Arrays</b>
 
 Plain arrays, and by extension typed arrays created inline from plain arrays, are not allowed:
