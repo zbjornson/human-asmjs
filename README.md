@@ -40,6 +40,7 @@ Instead, you have to use the heap (or another external arg) and views into typed
 
 ```javascript
 function MyModule(stdlib, foreign, heap) {
+  'use asm';
   var arr = new stdlib.Int8Array(heap);
   arr[0] = 1; // "asm.js must end with a return export statement"
   // ...
@@ -50,6 +51,7 @@ Instead do something like this:
 
 ```javascript
 function MyModule(stdlib, foreign, heap) {
+  'use asm';
   var arr = new stdlib.Int8Array(heap);
   function init() {
     arr[0] = 1;
