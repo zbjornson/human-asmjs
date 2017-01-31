@@ -3,9 +3,9 @@ human-asmjs
 
 NOTE: (asm.js will be probably abandoned in favour of WebAssembly)
 
-[asm.js](http://asmjs.org/spec/latest/) is an ahead-of-time (AOT) compiler for javascript. It's primarily intended as a target for compilers such as Emscripten, but it's possible for humans to write in asm.js as well. Unfortunately, there aren't many good examples and I ended up falling into a lot of pits from which I could only escape by trial-and-error. This readme contains some guidance to help others avoid these errors.
+[asm.js](http://asmjs.org/spec/latest/) is an optimizable subset of javascript that is generally compiled ahead-of-time (AOT). It's primarily intended as a target for compilers such as Emscripten, but it's possible for humans to write in asm.js as well. Unfortunately, there aren't many good examples and I ended up falling into a lot of pits from which I could only escape by trial-and-error. This readme contains some guidance to help others avoid these errors.
 
-Contributions welcome. This document is based more on my observations than on my reading of the spec. Thus, there are probably errors in this document originating from my misunderstanding of the spec.
+Contributions welcome. This document is based more on my observations than on my reading of the spec. Thus, there are potentially errors in this document originating from my misunderstanding of the spec.
 
 #### TOC
 
@@ -20,13 +20,7 @@ Contributions welcome. This document is based more on my observations than on my
 
 ## 0. Overview
 
-Write asm.js code involves:
-
-- Create an asm function module
-- Use the `"use asm"` declaration
-- Shared variable declaration
-- Function(s) definition(s)
-- Export functions
+An asm function module consists of the `"use asm"` declaration, shared variable declarations, function(s) definition(s) and exported functions.
 
 ```javascript
 function asmModule(stdlib, foreign, heap) {
@@ -49,13 +43,13 @@ function asmModule(stdlib, foreign, heap) {
 }
 ```
 
-The process to create an asm.js module is called [linking](http://asmjs.org/spec/latest/#linking-0)
+Compiled asm modules are [linked](http://asmjs.org/spec/latest/#linking-0) for invocation from javascript.
 
 ## 1. Types
 
 Asm.js handles three numeric types:
 
-- int: 32 bit integer type
+- int: 32 bit integer type 
 - double: 64 bit floating point type
 - float: 32 bit floating point type
 
@@ -88,7 +82,7 @@ var a = 0; a = (x/2)|0; // works
 
 ### 1.2 Type coercion
 
-You can coerce one numeric types into anothers:
+You can coerce one numeric type into another:
 
 
 From / To | Int  | Double | Float |
@@ -180,7 +174,7 @@ function MyModule(stdlib, foreign, heap) {
 | Float32Array	| 32bit floating point number | Float | 4 bytes |
 | Float64Array	| 64bit floating point number | Double | 8 bytes |
 
-When extracting the content of typed array to variable or using it for calculation, it is necessary to correct type:
+When extracting the content of typed array to variable or using it for calculation, it is necessary to specify the correct type:
 
 ```javascript
 // valid
