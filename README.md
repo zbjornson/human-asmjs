@@ -67,7 +67,7 @@ The method of describing each type is different.
 
 | Type | Variable declaration | Function parameter | Return type |
 | ---- | -------------------- | ------------------ | ----------- |
-| Int  | `var i = 0;` | `i = i|0;` | `return i|0` |
+| Int  | `var i = 0;` | `i = i\|0;` | `return i\|0` |
 | Double | `var d = 0.0` | `d = +d` | `return +d` |
 | Float | `var f = fround(f)` | `f = fround(f)` | `return fround(f)` |
 
@@ -87,7 +87,7 @@ You can coerce one numeric type into another:
 
 From / To | Int  | Double | Float |
 --- | --- | --- | --- |
-Int | _(none)_ | `+(a|0)` | `fround(a|0)` |
+Int | _(none)_ | `+(a\|0)` | `fround(a\|0)` |
 Double | `~~floor(a)` | _(none)_  | `fround(a)` |
 Float | `~~floor(+a)` | `+a` |  _(none)_ |
 
